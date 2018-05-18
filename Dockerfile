@@ -1,8 +1,6 @@
-
-FROM microsoft/aspnetcore:1
-LABEL Name=odetofood Version=0.0.1
-ARG source=.
+FROM microsoft/aspnetcore:2.0
 WORKDIR /app
-EXPOSE 3000
-COPY $source .
-ENTRYPOINT dotnet odetofood.dll
+COPY ./publish .
+EXPOSE 8081/tcp
+ENV ASPNETCORE_URLS http://*:8081
+ENTRYPOINT ["dotnet", "OdeToFood.dll"]
