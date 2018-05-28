@@ -32,7 +32,7 @@ namespace OdeToFood
 
             app.Run(async (context) =>
             {
-                var greeting = greeter.GetMessageOfTheDay();//configutation["Greeting"];
+                var greeting = greeter.GetMessageOfTheDay();
                 await context.Response.WriteAsync(greeting);
             });
         }
