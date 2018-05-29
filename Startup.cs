@@ -27,36 +27,38 @@ namespace OdeToFood
                               IGreeter greeter,
                               ILogger<Startup> logger)
         {
-            // if (env.IsDevelopment())
-            // {
-            //     app.UseDeveloperExceptionPage();
-            // }
-
-            app.Use(next =>
+            if (env.IsDevelopment())
             {
-                return async context =>
-                {
-                    logger.LogInformation("Request incoming");
-                    if (context.Request.Path.StartsWithSegments("/mym"))
-                    {
-                        await context.Response.WriteAsync("Hit!!");
-                        logger.LogInformation("Request handled");
-                    }
-                    else
-                    {
-                        await next(context);
-                        logger.LogInformation("Response outgoing");
-                    }
-                };
-            });
+                app.UseDeveloperExceptionPage();
+            }
+
+            // app.Use(next =>
+            // {
+            //     return async context =>
+            //     {
+            //         logger.LogInformation("Request incoming");
+            //         if (context.Request.Path.StartsWithSegments("/mym"))
+            //         {
+            //             await context.Response.WriteAsync("Hit!!");
+            //             logger.LogInformation("Request handled");
+            //         }
+            //         else
+            //         {
+            //             await next(context);
+            //             logger.LogInformation("Response outgoing");
+            //         }
+            //     };
+            // });
 
 
-            app.UseWelcomePage(new WelcomePageOptions() { Path = "/ben" });
+            // app.UseWelcomePage(new WelcomePageOptions() { Path = "/ben" });
+            app.UseFileServer();
 
             app.Run(async (context) =>
             {
                 var greeting = greeter.GetMessageOfTheDay();
-                await context.Response.WriteAsync(greeting);
+
+                await context.Response.WriteAsync($"{greeting} : {env.EnvironmentName}");
             });
         }
     }
