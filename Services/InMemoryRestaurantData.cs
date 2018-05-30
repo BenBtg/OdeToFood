@@ -18,6 +18,11 @@ namespace OdeToFood.Services
             };
         }
 
+        public Restaurant Get(int id)
+        {
+            return _restaurants.FirstOrDefault(x => x.Id == id);
+        }
+
         public IEnumerable<Restaurant> GetAll()
         {
             return  _restaurants.OrderBy(r => r.Name);

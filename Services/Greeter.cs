@@ -15,7 +15,6 @@ namespace OdeToFood.Services
         { 
             var greeting = _configuration["Greeting"];
             return greeting;
-
         }
     }
 }

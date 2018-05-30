@@ -13,10 +13,16 @@ namespace OdeToFood.Controllers
             _restaurantData = restaurantData;
         }
 
-        public ActionResult Index()
+        public IActionResult Index()
         {
             var model = _restaurantData.GetAll();
             return View(model); 
+        }
+
+        public IActionResult Details(int id)
+        {
+            var model = _restaurantData.Get(id);
+            return View(model);
         }
     }
 }
