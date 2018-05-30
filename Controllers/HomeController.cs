@@ -1,10 +1,14 @@
+using Microsoft.AspNetCore.Mvc;
+using OdeToFood.Models;
+
 namespace OdeToFood.Controllers
 {
-    public class HomeController
+    public class HomeController : Controller
     {
-        public string Index()
+        public ActionResult Index()
         {
-            return "Hello from the HomeController";
+            var model = new Restaurant(){Id = 1, Name = "Bens Balti House"};
+            return View(model); 
         }
     }
 }
