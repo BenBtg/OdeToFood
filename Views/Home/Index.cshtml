@@ -1,5 +1,5 @@
 
-@model OdeToFood.Models.Restaurant
+@model IEnumerable<OdeToFood.Models.Restaurant>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +11,17 @@
     <script src="main.js"></script>
 </head>
 <body>
-    Welcome to @Model.Name
+    <table>
+        @foreach(var restuarant in Model)
+        {
+            <tr>
+                <td>@restuarant.Id</td>
+                <td>:</td>
+                <td>@restuarant.Name</td>
+            </tr>
+
+        }
+    </table>
+
 </body>
 </html>
