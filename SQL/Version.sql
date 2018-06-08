@@ -1,0 +1,7 @@
+SET NOCOUNT ON;
+
+SELECT * FROM sys.dm_os_host_info;
+
+SELECT SERVERPROPERTY(N'Edition');
+
+PRINT @@VERSION;
