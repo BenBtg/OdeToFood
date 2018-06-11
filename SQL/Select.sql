@@ -1,4 +1,4 @@
 SELECT StockItemName, StockItemID 
-FROM WideWorldImporters.Warehouse.StockItems 
+FROM WideWorldImporeters.Warehouse.StockItems 
 ORDER BY StockItemID
 
