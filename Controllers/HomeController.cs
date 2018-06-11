@@ -37,11 +37,15 @@ namespace OdeToFood.Controllers
         }
         
         [HttpPost]
-        public IActionResult Create(Restaurant restaurant)
+        public IActionResult Create(RestaurantEditModel model)
         {
-            _restaurantData.Add(restaurant);
+            var newRestaurant = new Restaurant(){
+                Name = model.Name, 
+                Cuisine = model.Cuisine};
+
+            newRestaurant = _restaurantData.Add(newRestaurant);
             // return View("Details", restaurant);
-           return RedirectToAction(nameof(Details), new {id = restaurant.Id});
+           return RedirectToAction(nameof(Details), new {id = newRestaurant.Id});
         }
     }
 }
