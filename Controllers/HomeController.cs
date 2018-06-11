@@ -29,10 +29,19 @@ namespace OdeToFood.Controllers
             var model = _restaurantData.Get(id);
             return View(model);
         }
-
+        
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
+        }
+        
+        [HttpPost]
+        public IActionResult Create(Restaurant restaurant)
+        {
+            _restaurantData.Add(restaurant);
+            // return View("Details", restaurant);
+           return RedirectToAction(nameof(Details), new {id = restaurant.Id});
         }
     }
 }
