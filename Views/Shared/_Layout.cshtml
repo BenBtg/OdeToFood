@@ -9,11 +9,10 @@
         <div>
             @RenderBody()
         </div>
-        <div>@DateTime.Now,Year</div>
-
+        <div>@DateTime.Now</div>
+        
         <footer>
-            @RenderSection("footer", required:true);
+            @RenderSection("footer", required:false)
         </footer>
     </body>
-
 </html>
